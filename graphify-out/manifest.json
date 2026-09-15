@@ -1,0 +1,452 @@
+{
+  "app/build.gradle": {
+    "mtime": 1789029322.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "f32aaea105c832dbb0888e85b1329a4a",
+    "semantic_hash": "f32aaea105c832dbb0888e85b1329a4a"
+  },
+  "app/src/androidTest/assets/HelperClass.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "9377e1d6e99ad51b7ec754566fa3f4ec",
+    "semantic_hash": "9377e1d6e99ad51b7ec754566fa3f4ec"
+  },
+  "app/src/androidTest/assets/appConfig.json": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "5690e1946ceab120a765cb86287b2118",
+    "semantic_hash": "5690e1946ceab120a765cb86287b2118"
+  },
+  "app/src/androidTest/java/com/median/testFiles/FirstTestClass.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "a101734e1faeb64c5df0c5d4f0c8f131",
+    "semantic_hash": "a101734e1faeb64c5df0c5d4f0c8f131"
+  },
+  "app/src/androidTest/java/com/median/testFiles/TestMethods.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "d141dada061272e824427a725695d5e3",
+    "semantic_hash": "d141dada061272e824427a725695d5e3"
+  },
+  "app/src/main/assets/BlobDownloader.js": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "a03d84284a0eef83a6e2f38310677836",
+    "semantic_hash": "a03d84284a0eef83a6e2f38310677836"
+  },
+  "app/src/main/assets/GoNativeJSBridgeLibrary.js": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "6a0f8d0ea20d09563c260d47f38b1f43",
+    "semantic_hash": "6a0f8d0ea20d09563c260d47f38b1f43"
+  },
+  "app/src/main/assets/androidCustomJS.js": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "b0b22d3c90a53d9d5e208587d9b153d1",
+    "semantic_hash": "b0b22d3c90a53d9d5e208587d9b153d1"
+  },
+  "app/src/main/assets/appConfig.json": {
+    "mtime": 1789029317.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "daeaa438f2f5e2c9c71849918ca22564",
+    "semantic_hash": "daeaa438f2f5e2c9c71849918ca22564"
+  },
+  "app/src/main/assets/custom-icons.json": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "c003cd68943ce5821120e72345d0cef1",
+    "semantic_hash": "c003cd68943ce5821120e72345d0cef1"
+  },
+  "app/src/main/assets/customJS.js": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "8358fa9556d089552dd2c7780ee49462",
+    "semantic_hash": "8358fa9556d089552dd2c7780ee49462"
+  },
+  "app/src/main/java/co/median/android/ActionManager.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "ff7322996857b3a59a66151d65c14d73",
+    "semantic_hash": "ff7322996857b3a59a66151d65c14d73"
+  },
+  "app/src/main/java/co/median/android/AnimationUtil.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "c9aa6ff755412229b4bb0fb8bb481186",
+    "semantic_hash": "c9aa6ff755412229b4bb0fb8bb481186"
+  },
+  "app/src/main/java/co/median/android/AppLinksActivity.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "9f7f5b9a490e7dd53617435b2aba0d3b",
+    "semantic_hash": "9f7f5b9a490e7dd53617435b2aba0d3b"
+  },
+  "app/src/main/java/co/median/android/AppUpgradeReceiver.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "0a87b263360ce130244fc07db1b382ba",
+    "semantic_hash": "0a87b263360ce130244fc07db1b382ba"
+  },
+  "app/src/main/java/co/median/android/AudioUtils.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "ca9b3ff042966352d9d1065b3905dcd7",
+    "semantic_hash": "ca9b3ff042966352d9d1065b3905dcd7"
+  },
+  "app/src/main/java/co/median/android/ConfigPreferences.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "b6256f81ccc7d89dea027a9b916eca69",
+    "semantic_hash": "b6256f81ccc7d89dea027a9b916eca69"
+  },
+  "app/src/main/java/co/median/android/ConfigUpdater.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "4fcb06eff4c3ad0acb57dcc2e819e510",
+    "semantic_hash": "4fcb06eff4c3ad0acb57dcc2e819e510"
+  },
+  "app/src/main/java/co/median/android/CustomHeaders.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "ca789267cdd3139f033f2a4ac81e3651",
+    "semantic_hash": "ca789267cdd3139f033f2a4ac81e3651"
+  },
+  "app/src/main/java/co/median/android/DownloadService.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "e4949b504606dd479340bc142eca6b3a",
+    "semantic_hash": "e4949b504606dd479340bc142eca6b3a"
+  },
+  "app/src/main/java/co/median/android/FileDownloader.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "ab6b23a74cf7bfc1ab27f604e71f031c",
+    "semantic_hash": "ab6b23a74cf7bfc1ab27f604e71f031c"
+  },
+  "app/src/main/java/co/median/android/FileUploadContract.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "dc0e5e0d7e65b1927cd2176570a67d5e",
+    "semantic_hash": "dc0e5e0d7e65b1927cd2176570a67d5e"
+  },
+  "app/src/main/java/co/median/android/FileWriterSharer.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "3da6b5ee7f2cd7e8dbf13b201243de8d",
+    "semantic_hash": "3da6b5ee7f2cd7e8dbf13b201243de8d"
+  },
+  "app/src/main/java/co/median/android/GoNativeApplication.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "39c068070607156408daa2bacbada8a3",
+    "semantic_hash": "39c068070607156408daa2bacbada8a3"
+  },
+  "app/src/main/java/co/median/android/GoNativeWindowManager.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "28202399bed94f5400df1571f07620e5",
+    "semantic_hash": "28202399bed94f5400df1571f07620e5"
+  },
+  "app/src/main/java/co/median/android/HtmlIntercept.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "d3a0817509189ac8cddee1217d27b11e",
+    "semantic_hash": "d3a0817509189ac8cddee1217d27b11e"
+  },
+  "app/src/main/java/co/median/android/IOUtils.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "0082ca7e556e1220acb2df2227364209",
+    "semantic_hash": "0082ca7e556e1220acb2df2227364209"
+  },
+  "app/src/main/java/co/median/android/IconUtils.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "5d3e27201a1f9059d27ff7ec85d5730c",
+    "semantic_hash": "5d3e27201a1f9059d27ff7ec85d5730c"
+  },
+  "app/src/main/java/co/median/android/Installation.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "84cbb543c79523c50f584cc7f8bdf385",
+    "semantic_hash": "84cbb543c79523c50f584cc7f8bdf385"
+  },
+  "app/src/main/java/co/median/android/JsCustomCodeExecutor.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "80b0de86f701549a737361139fc6491f",
+    "semantic_hash": "80b0de86f701549a737361139fc6491f"
+  },
+  "app/src/main/java/co/median/android/JsonMenuAdapter.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "d0c4d4a83c58b7de13b0ecbad2c286a5",
+    "semantic_hash": "d0c4d4a83c58b7de13b0ecbad2c286a5"
+  },
+  "app/src/main/java/co/median/android/KeyboardManager.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "002b0de77e8af6900cb85005fc132ff3",
+    "semantic_hash": "002b0de77e8af6900cb85005fc132ff3"
+  },
+  "app/src/main/java/co/median/android/LaunchActivity.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "1f508f2258d9ed34c2ca8883a96d2a97",
+    "semantic_hash": "1f508f2258d9ed34c2ca8883a96d2a97"
+  },
+  "app/src/main/java/co/median/android/LocationServiceHelper.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "1c16196e348477cdcffd5985b75ad1fa",
+    "semantic_hash": "1c16196e348477cdcffd5985b75ad1fa"
+  },
+  "app/src/main/java/co/median/android/LoginManager.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "fe72d8a9137c63b7510a03c973ec845c",
+    "semantic_hash": "fe72d8a9137c63b7510a03c973ec845c"
+  },
+  "app/src/main/java/co/median/android/MainActivity.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "f3e1591f4c78c2fb5a1e6d4840ccb80a",
+    "semantic_hash": "f3e1591f4c78c2fb5a1e6d4840ccb80a"
+  },
+  "app/src/main/java/co/median/android/MediaFileHelper.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "392287a24fe11bcac77351a46626bc16",
+    "semantic_hash": "392287a24fe11bcac77351a46626bc16"
+  },
+  "app/src/main/java/co/median/android/MedianEventsManager.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "bcebcf97bae7beaf0a7999996f204141",
+    "semantic_hash": "bcebcf97bae7beaf0a7999996f204141"
+  },
+  "app/src/main/java/co/median/android/MySwipeRefreshLayout.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "e5b2b842c25effd59f363536833ce630",
+    "semantic_hash": "e5b2b842c25effd59f363536833ce630"
+  },
+  "app/src/main/java/co/median/android/PermissionsUtil.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "0d3977d7fbd6b58160ef3475009d5f44",
+    "semantic_hash": "0d3977d7fbd6b58160ef3475009d5f44"
+  },
+  "app/src/main/java/co/median/android/RegistrationManager.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "4fb3a4717a3298aaaac8f02b2147f75f",
+    "semantic_hash": "4fb3a4717a3298aaaac8f02b2147f75f"
+  },
+  "app/src/main/java/co/median/android/SideNavManager.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "1aee5fcec173711fd8612d0ca47dc428",
+    "semantic_hash": "1aee5fcec173711fd8612d0ca47dc428"
+  },
+  "app/src/main/java/co/median/android/SystemBarManager.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "ad1754938832d3876ed88800bb0a759c",
+    "semantic_hash": "ad1754938832d3876ed88800bb0a759c"
+  },
+  "app/src/main/java/co/median/android/TabManager.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "75bba3a2367bc829ad6bc85346e909aa",
+    "semantic_hash": "75bba3a2367bc829ad6bc85346e909aa"
+  },
+  "app/src/main/java/co/median/android/ThemeUtils.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "29deb4caa3f361bfff78565e034d19d6",
+    "semantic_hash": "29deb4caa3f361bfff78565e034d19d6"
+  },
+  "app/src/main/java/co/median/android/UrlInspector.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "b2b13f021669a36dfa2a65dba4be33d5",
+    "semantic_hash": "b2b13f021669a36dfa2a65dba4be33d5"
+  },
+  "app/src/main/java/co/median/android/UrlLoader.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "42da057cf5acd55be1ff168d03c3150d",
+    "semantic_hash": "42da057cf5acd55be1ff168d03c3150d"
+  },
+  "app/src/main/java/co/median/android/UrlNavigation.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "7e25de6f5a4c53fd70a9807c39bbdb32",
+    "semantic_hash": "7e25de6f5a4c53fd70a9807c39bbdb32"
+  },
+  "app/src/main/java/co/median/android/WebViewPool.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "090ba818020f9b7de4b95af9fc67a203",
+    "semantic_hash": "090ba818020f9b7de4b95af9fc67a203"
+  },
+  "app/src/main/java/co/median/android/WebViewPoolDisownPolicy.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "8aa9b7295bf2ea0be06f03ae6cc43e92",
+    "semantic_hash": "8aa9b7295bf2ea0be06f03ae6cc43e92"
+  },
+  "app/src/main/java/co/median/android/widget/BottomNavigationShowOnScrollBehavior.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "92c1e4164a14169519a1d4e887a7e196",
+    "semantic_hash": "92c1e4164a14169519a1d4e887a7e196"
+  },
+  "app/src/main/java/co/median/android/widget/CircleImageView.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "aba842f28c4bf4bd85bdd01e6d097d73",
+    "semantic_hash": "aba842f28c4bf4bd85bdd01e6d097d73"
+  },
+  "app/src/main/java/co/median/android/widget/GoNativeDrawerLayout.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "4a239b5444a51c4d0679e79986964a4f",
+    "semantic_hash": "4a239b5444a51c4d0679e79986964a4f"
+  },
+  "app/src/main/java/co/median/android/widget/GoNativeSwipeRefreshLayout.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "1365580bb33f9ee6b79fb039f5c41973",
+    "semantic_hash": "1365580bb33f9ee6b79fb039f5c41973"
+  },
+  "app/src/main/java/co/median/android/widget/HandleView.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "805cfccf24bfe35f5226c86109db81c0",
+    "semantic_hash": "805cfccf24bfe35f5226c86109db81c0"
+  },
+  "app/src/main/java/co/median/android/widget/MedianLottieProgress.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "fe91ece2cf45262b5f72acf0e3f6128f",
+    "semantic_hash": "fe91ece2cf45262b5f72acf0e3f6128f"
+  },
+  "app/src/main/java/co/median/android/widget/SwipeHistoryNavigationLayout.kt": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "5556153ff230cf8f7a6b3876b37d4795",
+    "semantic_hash": "5556153ff230cf8f7a6b3876b37d4795"
+  },
+  "app/src/main/java/co/median/android/widget/WebViewContainerView.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "f4b2379d61dd967b3687b26636c2fea9",
+    "semantic_hash": "f4b2379d61dd967b3687b26636c2fea9"
+  },
+  "app/src/normal/java/co/median/android/GoNativeWebChromeClient.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "1fdf36d038bf9bd5fbbdc0f424d778ac",
+    "semantic_hash": "1fdf36d038bf9bd5fbbdc0f424d778ac"
+  },
+  "app/src/normal/java/co/median/android/GoNativeWebviewClient.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "9811d509df775cde6a0d87ba0830bbda",
+    "semantic_hash": "9811d509df775cde6a0d87ba0830bbda"
+  },
+  "app/src/normal/java/co/median/android/LeanWebView.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "2900d61a3ad2ee55579da35a45852444",
+    "semantic_hash": "2900d61a3ad2ee55579da35a45852444"
+  },
+  "app/src/normal/java/co/median/android/PoolWebViewClient.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "8c301529e0a1ee2e3a38510eba5c1a3d",
+    "semantic_hash": "8c301529e0a1ee2e3a38510eba5c1a3d"
+  },
+  "app/src/normal/java/co/median/android/WebViewInterface.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "98b53f2650c9d93034db7ee953d16574",
+    "semantic_hash": "98b53f2650c9d93034db7ee953d16574"
+  },
+  "app/src/normal/java/co/median/android/WebViewSetup.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "4cabce4b0b4193d370ec4bbf47f657cb",
+    "semantic_hash": "4cabce4b0b4193d370ec4bbf47f657cb"
+  },
+  "app/src/normal/java/co/median/android/WebkitCookieManagerProxy.java": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "f651914a7e904eea084d4e4cf5f32273",
+    "semantic_hash": "f651914a7e904eea084d4e4cf5f32273"
+  },
+  "build.gradle": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "6d3627337617d20a2e77934b1c3f5d21",
+    "semantic_hash": "6d3627337617d20a2e77934b1c3f5d21"
+  },
+  "dependencies.json": {
+    "mtime": 1789029317.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "52f0c4969b18f1171bcbbf22b8a3fc71",
+    "semantic_hash": "52f0c4969b18f1171bcbbf22b8a3fc71"
+  },
+  "generate-app-icons.sh": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "0527f0bbc6084b1b5fa9a5aa5581c469",
+    "semantic_hash": "0527f0bbc6084b1b5fa9a5aa5581c469"
+  },
+  "generate-header-images.sh": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "54190aa5d6432d6ca4200ddb4744cd93",
+    "semantic_hash": "54190aa5d6432d6ca4200ddb4744cd93"
+  },
+  "generate-theme.js": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "05212e03718bd1b521ce44e0043a4fb5",
+    "semantic_hash": "05212e03718bd1b521ce44e0043a4fb5"
+  },
+  "generate-tinted-icons.sh": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "8430dd576ca605d525227ee3307ddca5",
+    "semantic_hash": "8430dd576ca605d525227ee3307ddca5"
+  },
+  "gradlew": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "a670520d9d36833b3e28d1e4b73cbe22",
+    "semantic_hash": "a670520d9d36833b3e28d1e4b73cbe22"
+  },
+  "plugins.gradle": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "f4fd85fff21b8cd17bf6e3e34397c6ea",
+    "semantic_hash": "f4fd85fff21b8cd17bf6e3e34397c6ea"
+  },
+  "settings.gradle": {
+    "mtime": 1787052900.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "fe169eed7831af5d315e57371ed44272",
+    "semantic_hash": "fe169eed7831af5d315e57371ed44272"
+  },
+  "app/src/main/res/raw/custom_sound_1.mp3": {
+    "mtime": 1789029317.0,
+    "seen": 1789484667.0205472,
+    "ast_hash": "f7995cce9baab3b9c8a1601c129f92fe",
+    "semantic_hash": "f7995cce9baab3b9c8a1601c129f92fe"
+  }
+}

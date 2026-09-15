@@ -1,0 +1,323 @@
+{
+  "directive": "questions is there any existing JavaScript interface or addJavascriptInterface",
+  "expanded_query": "questions is there any existing JavaScript interface or addJavascriptInterface questions is there any existing javascript interface or addjavascriptinterface JavaScript",
+  "synonyms": {
+    "terms": [
+      "questions",
+      "is",
+      "there",
+      "any",
+      "existing",
+      "javascript",
+      "interface",
+      "or",
+      "addjavascriptinterface",
+      "JavaScript"
+    ]
+  },
+  "tier_used": 1,
+  "graph_used": false,
+  "search_terms_used": [
+    "questions is there any existing JavaScript interface or addJavascriptInterface",
+    "questions",
+    "is",
+    "there",
+    "any",
+    "existing",
+    "javascript",
+    "interface",
+    "or",
+    "addjavascriptinterface",
+    "JavaScript"
+  ],
+  "generated_at": "2026-09-15T08:15:11",
+  "budget": {
+    "whole_file_max_lines": 300,
+    "snippet_context_lines": 8,
+    "max_files": 6,
+    "max_total_lines": 1200,
+    "max_snippets_per_file": 5
+  },
+  "files": [
+    {
+      "path": "app\\src\\main\\assets\\offline.html",
+      "mode": "full",
+      "line_count": 270,
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover\" />\n<title>No Connection</title>\n<style>\n  :root {\n    --text-primary: #1c1c1e;\n    --text-secondary: #636366;\n    --border-strong: #c6c6c8;\n    --surface-1: #f2f2f7;\n    --accent: #2e75b6;\n  }\n\n  @media (prefers-color-scheme: dark) {\n    :root {\n      --text-primary: #f2f2f7;\n      --text-secondary: #a1a1a6;\n      --border-strong: #38383a;\n      --surface-1: #2c2c2e;\n    }\n  }\n\n  * {\n    box-sizing: border-box;\n    -webkit-tap-highlight-color: transparent;\n  }\n\n  html, body {\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    min-height: 100dvh;\n    background: transparent;\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;\n  }\n\n  body {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n\n  .container {\n    width: 100%;\n    max-width: 480px;\n    margin: 0 auto;\n    text-align: center;\n    padding: max(24px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(32px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n  }\n\n  /* Fluid & enlarged bird wrapper */\n  .bird-wrap {\n    position: relative;\n    width: clamp(210px, 55vw, 290px);\n    aspect-ratio: 1 / 1;\n    margin: 0 auto;\n  }\n\n  .bird-wrap svg {\n    width: 100%;\n    height: 100%;\n    display: block;\n    overflow: visible;\n  }\n\n  /* Tears locked to percentages so they stay aligned at any screen size */\n  .tear {\n    position: absolute;\n    width: 3.75%;\n    height: 6.25%;\n    border-radius: 50% 50% 60% 60%;\n    animation: fall 1.2s infinite;\n    opacity: 0;\n    pointer-events: none;\n  }\n  .tear1 {\n    background: #74b9ff;\n    left: 23.75%;\n    top: 38.75%;\n    animation-delay: 0s;\n  }\n  .tear2 {\n    background: #74b9ff;\n    left: 32.5%;\n    top: 36.25%;\n    animation-delay: 0.5s;\n  }\n\n  @keyframes fall {\n    0%   { opacity: 0; transform: translateY(0); }\n    20%  { opacity: 1; }\n    80%  { opacity: 1; }\n    100% { opacity: 0; transform: translateY(180%); }\n  }\n\n  /* Page flip */\n  .page {\n    transform-origin: left center;\n    animation: flip 0.9s infinite ease-in-out;\n  }\n  @keyframes flip {\n    0%   { transform: rotateY(0deg); opacity: 1; }\n    45%  { transform: rotateY(-80deg); opacity: 0.3; }\n    50%  { transform: rotateY(-80deg); opacity: 0.3; }\n    100% { transform: rotateY(0deg); opacity: 1; }\n  }\n\n  /* Wing flap */\n  .wing {\n    transform-origin: 80% 50%;\n    animation: flap 0.9s infinite ease-in-out;\n  }\n  @keyframes flap {\n    0%, 100% { transform: rotate(0deg); }\n    50%      { transform: rotate(-18deg); }\n  }\n\n  /* Scalable typography */\n  .message {\n    margin-top: clamp(20px, 4.5vw, 32px);\n    color: var(--text-primary);\n    font-size: clamp(1.25rem, 5vw, 1.65rem);\n    font-weight: 600;\n    letter-spacing: -0.015em;\n  }\n\n  .sub {\n    color: var(--text-secondary);\n    font-size: clamp(0.95rem, 3.8vw, 1.12rem);\n    margin-top: 8px;\n    max-width: 320px;\n    line-height: 1.45;\n  }\n\n  /* Touch-friendly, accessible button */\n  button {\n    margin-top: clamp(24px, 5vw, 36px);\n    min-height: 48px;\n    min-width: 150px;\n    padding: 12px 36px;\n    border: 1px solid var(--border-strong);\n    background: transparent;\n    border-radius: 12px;\n    font-size: clamp(1rem, 4vw, 1.15rem);\n    font-weight: 600;\n    color: var(--text-primary);\n    cursor: pointer;\n    transition: transform 0.15s ease, background 0.2s ease, opacity 0.2s ease;\n  }\n\n  button:hover {\n    background: var(--surface-1);\n  }\n\n  button:active {\n    transform: scale(0.96);\n    opacity: 0.8;\n  }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"bird-wrap\">\n    <!-- Tears -->\n    <div class=\"tear tear1\"></div>\n    <div class=\"tear tear2\"></div>\n\n    <svg viewBox=\"0 0 160 160\" xmlns=\"http://www.w3.org/2000/svg\">\n      <!-- Book base -->\n      <rect x=\"22\" y=\"100\" width=\"116\" height=\"50\" rx=\"4\" fill=\"#c0985b\"/>\n      <!-- Book spine -->\n      <rect x=\"76\" y=\"100\" width=\"8\" height=\"50\" fill=\"#a07840\"/>\n      <!-- Left page -->\n      <rect x=\"26\" y=\"104\" width=\"48\" height=\"43\" rx=\"2\" fill=\"#fdf6e3\"/>\n      <!-- Right page -->\n      <rect x=\"86\" y=\"104\" width=\"48\" height=\"43\" rx=\"2\" fill=\"#faf0d0\"/>\n      <!-- Page lines left -->\n      <line x1=\"32\" y1=\"114\" x2=\"70\" y2=\"114\" stroke=\"#d4c8a0\" stroke-width=\"1\"/>\n      <line x1=\"32\" y1=\"120\" x2=\"70\" y2=\"120\" stroke=\"#d4c8a0\" stroke-width=\"1\"/>\n      <line x1=\"32\" y1=\"126\" x2=\"70\" y2=\"126\" stroke=\"#d4c8a0\" stroke-width=\"1\"/>\n      <line x1=\"32\" y1=\"132\" x2=\"70\" y2=\"132\" stroke=\"#d4c8a0\" stroke-width=\"1\"/>\n      <line x1=\"32\" y1=\"138\" x2=\"70\" y2=\"138\" stroke=\"#d4c8a0\" stroke-width=\"1\"/>\n      <!-- Page lines right -->\n      <line x1=\"90\" y1=\"114\" x2=\"128\" y2=\"114\" stroke=\"#d4c8a0\" stroke-width=\"1\"/>\n      <line x1=\"90\" y1=\"120\" x2=\"128\" y2=\"120\" stroke=\"#d4c8a0\" stroke-width=\"1\"/>\n      <line x1=\"90\" y1=\"126\" x2=\"128\" y2=\"126\" stroke=\"#d4c8a0\" stroke-width=\"1\"/>\n      <line x1=\"90\" y1=\"132\" x2=\"128\" y2=\"132\" stroke=\"#d4c8a0\" stroke-width=\"1\"/>\n      <line x1=\"90\" y1=\"138\" x2=\"128\" y2=\"138\" stroke=\"#d4c8a0\" stroke-width=\"1\"/>\n\n      <!-- Flipping page (animated) -->\n      <g class=\"page\" style=\"transform-box:fill-box;\">\n        <rect x=\"76\" y=\"104\" width=\"48\" height=\"43\" rx=\"2\" fill=\"#e8ddb5\" opacity=\"0.9\"/>\n        <line x1=\"80\" y1=\"114\" x2=\"120\" y2=\"114\" stroke=\"#bfb080\" stroke-width=\"1\"/>\n        <line x1=\"80\" y1=\"120\" x2=\"120\" y2=\"120\" stroke=\"#bfb080\" stroke-width=\"1\"/>\n        <line x1=\"80\" y1=\"126\" x2=\"120\" y2=\"126\" stroke=\"#bfb080\" stroke-width=\"1\"/>\n      </g>\n\n      <!-- Bird body -->\n      <ellipse cx=\"80\" cy=\"75\" rx=\"30\" ry=\"26\" fill=\"#4a90d9\"/>\n      <!-- Bird belly -->\n      <ellipse cx=\"80\" cy=\"80\" rx=\"18\" ry=\"16\" fill=\"#eaf4ff\"/>\n      <!-- Wing (left, animated) -->\n      <g class=\"wing\" style=\"transform-box:fill-box;\">\n        <ellipse cx=\"58\" cy=\"75\" rx=\"18\" ry=\"12\" fill=\"#3a78c0\" transform=\"rotate(-10 58 75)\"/>\n      </g>\n      <!-- Wing tip lines -->\n      <line x1=\"48\" y1=\"72\" x2=\"42\" y2=\"78\" stroke=\"#2a5fa0\" stroke-width=\"1.5\" stroke-linecap=\"round\"/>\n      <line x1=\"50\" y1=\"76\" x2=\"44\" y2=\"82\" stroke=\"#2a5fa0\" stroke-width=\"1.5\" stroke-linecap=\"round\"/>\n      <!-- Right wing -->\n      <ellipse cx=\"102\" cy=\"75\" rx=\"18\" ry=\"12\" fill=\"#3a78c0\" transform=\"rotate(10 102 75)\"/>\n\n      <!-- Head -->\n      <ellipse cx=\"80\" cy=\"50\" rx=\"22\" ry=\"20\" fill=\"#4a90d9\"/>\n      <!-- Tuft -->\n      <ellipse cx=\"80\" cy=\"32\" rx=\"8\" ry=\"10\" fill=\"#3a78c0\" transform=\"rotate(-5 80 32)\"/>\n      <ellipse cx=\"72\" cy=\"33\" rx=\"5\" ry=\"8\" fill=\"#2a68a9\" transform=\"rotate(-20 72 33)\"/>\n\n      <!-- Eye white -->\n      <circle cx=\"74\" cy=\"48\" r=\"7\" fill=\"white\"/>\n      <!-- Eye -->\n      <circle cx=\"74\" cy=\"48\" r=\"4.5\" fill=\"#1a1a1a\"/>\n      <!-- Pupil highlight -->\n      <circle cx=\"75.5\" cy=\"46.5\" r=\"1.5\" fill=\"white\"/>\n      <!-- Sad eyebrow -->\n      <path d=\"M68 42 Q74 40 80 43\" stroke=\"#2a5fa0\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n\n      <!-- Beak -->\n      <path d=\"M62 54 L54 58 L62 60 Z\" fill=\"#f0b429\"/>\n      <!-- Mouth frown -->\n      <path d=\"M62 58 Q58 62 56 60\" stroke=\"#d09010\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n\n      <!-- Feet on book -->\n      <line x1=\"72\" y1=\"100\" x2=\"68\" y2=\"105\" stroke=\"#f0b429\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n      <line x1=\"80\" y1=\"100\" x2=\"80\" y2=\"105\" stroke=\"#f0b429\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n      <line x1=\"88\" y1=\"100\" x2=\"92\" y2=\"105\" stroke=\"#f0b429\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n      <!-- Toe nails -->\n      <line x1=\"68\" y1=\"105\" x2=\"64\" y2=\"105\" stroke=\"#f0b429\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n      <line x1=\"68\" y1=\"105\" x2=\"68\" y2=\"108\" stroke=\"#f0b429\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n      <line x1=\"80\" y1=\"105\" x2=\"76\" y2=\"105\" stroke=\"#f0b429\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n      <line x1=\"80\" y1=\"105\" x2=\"80\" y2=\"108\" stroke=\"#f0b429\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n      <line x1=\"92\" y1=\"105\" x2=\"96\" y2=\"105\" stroke=\"#f0b429\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n      <line x1=\"92\" y1=\"105\" x2=\"92\" y2=\"108\" stroke=\"#f0b429\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n    </svg>\n  </div>\n\n  <div class=\"message\">No internet connection</div>\n  <div class=\"sub\">Check your connection and try again</div>\n  \n  <button onclick=\"handleReload()\">Retry</button>\n</div>\n\n<script>\n  function handleReload() {\n    if (window.median && window.median.webview && typeof window.median.webview.reload === 'function') {\n      window.median.webview.reload();\n    } else if (window.gonative && window.gonative.webview && typeof window.gonative.webview.reload === 'function') {\n      window.gonative.webview.reload();\n    } else {\n      window.location.reload();\n    }\n  }\n</script>\n</body>\n</html>",
+      "hits": [
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 215,
+          "text": "Right wing",
+          "kind": "descriptive_block",
+          "score": 60.0
+        }
+      ],
+      "symbols": [],
+      "comments": [
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 175,
+          "range": "app\\src\\main\\assets\\offline.html:175",
+          "kind": "descriptive_block",
+          "text": "Book base"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 177,
+          "range": "app\\src\\main\\assets\\offline.html:177",
+          "kind": "descriptive_block",
+          "text": "Book spine"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 179,
+          "range": "app\\src\\main\\assets\\offline.html:179",
+          "kind": "descriptive_block",
+          "text": "Left page"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 181,
+          "range": "app\\src\\main\\assets\\offline.html:181",
+          "kind": "descriptive_block",
+          "text": "Right page"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 183,
+          "range": "app\\src\\main\\assets\\offline.html:183",
+          "kind": "descriptive_block",
+          "text": "Page lines left"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 189,
+          "range": "app\\src\\main\\assets\\offline.html:189",
+          "kind": "descriptive_block",
+          "text": "Page lines right"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 196,
+          "range": "app\\src\\main\\assets\\offline.html:196",
+          "kind": "descriptive_block",
+          "text": "Flipping page (animated)"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 204,
+          "range": "app\\src\\main\\assets\\offline.html:204",
+          "kind": "descriptive_block",
+          "text": "Bird body"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 206,
+          "range": "app\\src\\main\\assets\\offline.html:206",
+          "kind": "descriptive_block",
+          "text": "Bird belly"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 208,
+          "range": "app\\src\\main\\assets\\offline.html:208",
+          "kind": "descriptive_block",
+          "text": "Wing (left, animated)"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 212,
+          "range": "app\\src\\main\\assets\\offline.html:212",
+          "kind": "descriptive_block",
+          "text": "Wing tip lines"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 215,
+          "range": "app\\src\\main\\assets\\offline.html:215",
+          "kind": "descriptive_block",
+          "text": "Right wing"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 224,
+          "range": "app\\src\\main\\assets\\offline.html:224",
+          "kind": "descriptive_block",
+          "text": "Eye white"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 228,
+          "range": "app\\src\\main\\assets\\offline.html:228",
+          "kind": "descriptive_block",
+          "text": "Pupil highlight"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 230,
+          "range": "app\\src\\main\\assets\\offline.html:230",
+          "kind": "descriptive_block",
+          "text": "Sad eyebrow"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 235,
+          "range": "app\\src\\main\\assets\\offline.html:235",
+          "kind": "descriptive_block",
+          "text": "Mouth frown"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 238,
+          "range": "app\\src\\main\\assets\\offline.html:238",
+          "kind": "descriptive_block",
+          "text": "Feet on book"
+        },
+        {
+          "file": "app\\src\\main\\assets\\offline.html",
+          "line": 242,
+          "range": "app\\src\\main\\assets\\offline.html:242",
+          "kind": "descriptive_block",
+          "text": "Toe nails"
+        }
+      ],
+      "functions_index": []
+    }
+  ],
+  "relation": {
+    "directive": "questions is there any existing JavaScript interface or addJavascriptInterface",
+    "is_relation_query": false,
+    "entities": [],
+    "matched": {},
+    "paths": [],
+    "evidence": [],
+    "confidence": "none",
+    "note": "not a relationship query"
+  },
+  "mode": "full_recon",
+  "snap": null,
+  "keyword_terms": [],
+  "keyword_functions": [],
+  "centrality": [
+    {
+      "id": "app_src_main_java_co_median_android_mainactivity_mainactivity",
+      "degree": 209,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_mainactivity_java_override",
+      "degree": 83,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_widget_gonativeswiperefreshlayout_gonativeswiperefreshlayout",
+      "degree": 83,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_normal_java_co_median_android_leanwebview_leanwebview",
+      "degree": 60,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "android_content_context",
+      "degree": 53,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_mainactivity_mainactivity_oncreate",
+      "degree": 49,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_urlnavigation_urlnavigation",
+      "degree": 45,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_mainactivity",
+      "degree": 42,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_filedownloader_filedownloader",
+      "degree": 40,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_actionmanager_actionmanager",
+      "degree": 38,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_tabmanager_tabmanager",
+      "degree": 37,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "android_webkit_webview",
+      "degree": 35,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_jsonmenuadapter_jsonmenuadapter",
+      "degree": 35,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_fileuploadcontract_fileuploadcontract",
+      "degree": 29,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_gonativeapplication_gonativeapplication",
+      "degree": 29,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    }
+  ],
+  "git": {
+    "is_repo": false,
+    "branch": "(not a repo)",
+    "remote_url": "(no remote)",
+    "upstream": "(none)",
+    "ahead": 0,
+    "behind": 0,
+    "dirty_count": 0,
+    "dirty_files": [],
+    "last_commit": ""
+  },
+  "git_log": [],
+  "git_stash": [],
+  "snaps": []
+}

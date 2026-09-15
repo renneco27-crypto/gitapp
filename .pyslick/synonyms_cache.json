@@ -1,0 +1,176 @@
+{
+  "a4afdccc406af01ff978ada98476accd1d1aaa1a": [
+    "questions",
+    "how",
+    "does",
+    "mainactivity",
+    "handle",
+    "webviewclient",
+    "and",
+    "shouldoverrideurlloading",
+    "MainActivity",
+    "WebViewClient",
+    "shouldOverrideUrlLoading"
+  ],
+  "a493ebe29ea4848dda10e10559e3674187812bfb": [
+    "questions",
+    "where",
+    "are",
+    "intents",
+    "launched",
+    "to",
+    "external",
+    "browsers"
+  ],
+  "4da878297f7bf54893e39bb9b457c7c3b9a273d8": [
+    "questions",
+    "what",
+    "urls",
+    "or",
+    "domains",
+    "are",
+    "treated",
+    "as",
+    "auth",
+    "login",
+    "authentication",
+    "signin",
+    "session"
+  ],
+  "c2e54a3d92d5328d2ae8b6aa3e4ee455b3b9c6e5": [
+    "questions",
+    "how",
+    "does",
+    "urlnavigation",
+    "handle",
+    "external",
+    "links",
+    "UrlNavigation"
+  ],
+  "aab1eced60e2a81501394f9114a4e1b756ffbc86": [
+    "questions",
+    "does",
+    "the",
+    "app",
+    "use",
+    "chrome",
+    "custom",
+    "tabs",
+    "or",
+    "customtabsintent",
+    "Chrome",
+    "Custom",
+    "Tabs"
+  ],
+  "9a46daa462d1257424746bd2283e415556ee89b2": [
+    "questions",
+    "where",
+    "is",
+    "the",
+    "webview",
+    "initialized",
+    "in",
+    "mainactivity",
+    "WebView",
+    "MainActivity"
+  ],
+  "e6a350828d00a1102a608b858e9cf623de86613b": [
+    "questions",
+    "is",
+    "there",
+    "any",
+    "existing",
+    "javascript",
+    "interface",
+    "or",
+    "addjavascriptinterface",
+    "JavaScript"
+  ],
+  "aa55181c5147340663361490187c8a197eb9964b": [
+    "questions",
+    "are",
+    "there",
+    "any",
+    "existing",
+    "ad",
+    "or",
+    "admob",
+    "integrations"
+  ],
+  "f9e483ad57758794bcd3b6e1f5d793c409a72f54": [
+    "where",
+    "is",
+    "activity_main.xml",
+    "xml",
+    "main",
+    "activity",
+    "file"
+  ],
+  "582a5869b3d4af0b749fd15ea66a02d603f645cf": [
+    "where",
+    "is",
+    "the",
+    "layout",
+    "view",
+    "screen"
+  ],
+  "ee34b43be5ade40f82930b1c73be86950f5ff04d": [
+    "urls",
+    "treated",
+    "as",
+    "auth",
+    "login",
+    "authentication",
+    "signin",
+    "session"
+  ],
+  "59396720771b45852d1499a805cad8716ba26f6d": [
+    "urlnavigation",
+    "external",
+    "links",
+    "UrlNavigation",
+    "navigation",
+    "url",
+    "web"
+  ],
+  "abdc52b66b82398620da0905900f768bfac06192": [
+    "where",
+    "is",
+    "mainactivity",
+    "MainActivity",
+    "request",
+    "software"
+  ],
+  "c60cade570b6082be9d869cbaa2110e946b5cb84": [
+    "where",
+    "is",
+    "mainactivity",
+    "openexternalbrowser",
+    "MainActivity",
+    "openExternalBrowser",
+    "open",
+    "external"
+  ],
+  "49a99934f1a69622e1a708b4d5f0daa7cb43ee3d": [
+    "where",
+    "is",
+    "json",
+    "parsing",
+    "JSON",
+    "location"
+  ],
+  "686ff3e8eccfc1241173081b32d154c25c00b29a": [
+    "show",
+    "me",
+    "all",
+    "oauth",
+    "or",
+    "google",
+    "login",
+    "auth",
+    "signin",
+    "authentication",
+    "related",
+    "code"
+  ]
+}

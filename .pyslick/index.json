@@ -1,0 +1,396 @@
+{
+  "built_at": "2026-09-15T08:12:25",
+  "root": "C:\\Users\\yuze2\\Desktop\\android",
+  "files": [
+    "app\\src\\main\\assets\\BlobDownloader.js",
+    "app\\src\\main\\assets\\GoNativeJSBridgeLibrary.js",
+    "app\\src\\main\\assets\\offline.html",
+    "generate-theme.js"
+  ],
+  "comments": [
+    {
+      "file": "generate-theme.js",
+      "line": 7,
+      "text": "Color resources files",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 11,
+      "text": "Check argument length",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 17,
+      "text": "LIGHT theme color defaults",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 39,
+      "text": "DARK theme color defaults",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 61,
+      "text": "Handle args Theme",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 65,
+      "text": "Actionbar args",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 72,
+      "text": "Sidebar args",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 78,
+      "text": "TabBar args",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 83,
+      "text": "Swipe args",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 88,
+      "text": "Pull to Refresh args",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 91,
+      "text": "Splash args",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 94,
+      "text": "Progress indicator",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 97,
+      "text": "System navigation bar",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 120,
+      "text": "Theme and default color values",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 173,
+      "text": "Check if colors are valid",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 194,
+      "text": "Start generating colors",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 197,
+      "text": "Actionbar colors",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 205,
+      "text": "Sidebar colors",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 211,
+      "text": "TabBar colors",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 216,
+      "text": "Swipe colors",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 221,
+      "text": "Pull to Refresh color",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 224,
+      "text": "Splash colors",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 227,
+      "text": "Progress indicator color",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 230,
+      "text": "System navigation background color",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 233,
+      "text": "Sendbird theme",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 244,
+      "text": "Build colors in xml from JSON array of colors",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 247,
+      "text": "Write to file",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 256,
+      "text": "Helper functions",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "generate-theme.js",
+      "line": 277,
+      "text": "Creates a JSON object of color which will be then transformed to xml",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\BlobDownloader.js",
+      "line": 1,
+      "text": "This is used because download from native side won't have session changes.",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\BlobDownloader.js",
+      "line": 5,
+      "text": "convert \"null\" string to actual null",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\GoNativeJSBridgeLibrary.js",
+      "line": 1,
+      "text": "this function accepts a callback function as params.callback that will be called with the command results if a callback is not provided it returns a promise that will resolve with the command results",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\GoNativeJSBridgeLibrary.js",
+      "line": 5,
+      "text": "execute command with provided callback function",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\GoNativeJSBridgeLibrary.js",
+      "line": 8,
+      "text": "create a temporary function and return a promise that executes command",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\GoNativeJSBridgeLibrary.js",
+      "line": 13,
+      "text": "declare a temporary function",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\GoNativeJSBridgeLibrary.js",
+      "line": 22,
+      "text": "execute command",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\GoNativeJSBridgeLibrary.js",
+      "line": 65,
+      "text": "///////////////////////////// //    General Commands   //// /////////////////////////////",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\GoNativeJSBridgeLibrary.js",
+      "line": 71,
+      "text": "backward compatibility for GoNative",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\GoNativeJSBridgeLibrary.js",
+      "line": 74,
+      "text": "to be modified as required",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\GoNativeJSBridgeLibrary.js",
+      "line": 344,
+      "text": "//////////////////////////////////// //   Webpage Helper Functions   //// ////////////////////////////////////",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\GoNativeJSBridgeLibrary.js",
+      "line": 375,
+      "text": "///////////////////////////// //   Android Exclusive   //// /////////////////////////////",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 175,
+      "text": "Book base",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 177,
+      "text": "Book spine",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 179,
+      "text": "Left page",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 181,
+      "text": "Right page",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 183,
+      "text": "Page lines left",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 189,
+      "text": "Page lines right",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 196,
+      "text": "Flipping page (animated)",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 204,
+      "text": "Bird body",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 206,
+      "text": "Bird belly",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 208,
+      "text": "Wing (left, animated)",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 212,
+      "text": "Wing tip lines",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 215,
+      "text": "Right wing",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 224,
+      "text": "Eye white",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 228,
+      "text": "Pupil highlight",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 230,
+      "text": "Sad eyebrow",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 235,
+      "text": "Mouth frown",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 238,
+      "text": "Feet on book",
+      "kind": "descriptive_block"
+    },
+    {
+      "file": "app\\src\\main\\assets\\offline.html",
+      "line": 242,
+      "text": "Toe nails",
+      "kind": "descriptive_block"
+    }
+  ],
+  "functions": [],
+  "rollups": {
+    "generate-theme.js": {
+      "opening_comments": [
+        "Color resources files",
+        "Check argument length",
+        "LIGHT theme color defaults"
+      ]
+    },
+    "app\\src\\main\\assets\\BlobDownloader.js": {
+      "opening_comments": [
+        "This is used because download from native side won't have session changes.",
+        "convert \"null\" string to actual null"
+      ]
+    },
+    "app\\src\\main\\assets\\GoNativeJSBridgeLibrary.js": {
+      "opening_comments": [
+        "this function accepts a callback function as params.callback that will be called with the command results if a callback is not provided it returns a promise that will resolve with the command results",
+        "execute command with provided callback function",
+        "create a temporary function and return a promise that executes command"
+      ]
+    },
+    "app\\src\\main\\assets\\offline.html": {
+      "opening_comments": [
+        "Book base",
+        "Book spine",
+        "Left page"
+      ]
+    }
+  }
+}

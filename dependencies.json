@@ -1,0 +1,9 @@
+{
+  "core": "2.4.2",
+  "plugins": {
+    "onesignal": "1.0.7",
+    "admob": "1.0.5",
+    "social-login": "1.0.4"
+  },
+  "engineVersion": "1.2.52"
+}

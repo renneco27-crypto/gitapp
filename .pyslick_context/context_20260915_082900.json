@@ -1,0 +1,394 @@
+{
+  "directive": "where is activity_main.xml",
+  "expanded_query": "where is activity_main.xml where is activity_main.xml xml main activity file",
+  "synonyms": {
+    "terms": [
+      "where",
+      "is",
+      "activity_main.xml",
+      "xml",
+      "main",
+      "activity",
+      "file"
+    ]
+  },
+  "tier_used": 1,
+  "graph_used": false,
+  "search_terms_used": [
+    "where is activity_main.xml",
+    "where",
+    "is",
+    "activity_main.xml",
+    "xml",
+    "main",
+    "activity",
+    "file"
+  ],
+  "generated_at": "2026-09-15T08:28:59",
+  "budget": {
+    "whole_file_max_lines": 300,
+    "snippet_context_lines": 8,
+    "max_files": 6,
+    "max_total_lines": 1200,
+    "max_snippets_per_file": 5
+  },
+  "files": [
+    {
+      "path": "generate-theme.js",
+      "mode": "full",
+      "line_count": 284,
+      "content": "#!/usr/bin/env node\n'use strict';\n\nvar fs = require('fs'), xml2js = require('xml2js');\nvar builder = new xml2js.Builder();\n\n// Color resources files\nvar colorFileLight = require('path').join(__dirname, 'app/src/main/res/values/colors.xml');\nvar colorFileDark = require('path').join(__dirname, 'app/src/main/res/values-night/colors.xml');\n\n// Check argument length\nif (process.argv.length < 22) {\n  console.log('Incomplete args - ' + process.argv.length + '/22');\n  showHelp();\n}\n\n// LIGHT theme color defaults\n\nvar LIGHT_DEFAULT_ACTIONBAR_COLOR = 'ffffff';\nvar LIGHT_DEFAULT_STATUSBAR_COLOR = '757575';\nvar LIGHT_DEFAULT_TITLE_COLOR = '000000';\nvar LIGHT_DEFAULT_ACCENT_COLOR = '009688';\nvar LIGHT_DEFAULT_BACKGROUND_COLOR = 'ffffff';\nvar LIGHT_DEFAULT_SIDEBAR_FOREGROUND_COLOR = '1e4963';\nvar LIGHT_DEFAULT_SIDEBAR_BACKGROUND_COLOR = 'ffffff';\nvar LIGHT_DEFAULT_SIDEBAR_SEPARATOR_COLOR = '30808080';\nvar LIGHT_DEFAULT_SIDEBAR_HIGHLIGHT_COLOR = '1e496e';\nvar LIGHT_DEFAULT_TAB_BAR_BACKGROUND_COLOR = 'ffffff';\nvar LIGHT_DEFAULT_TAB_BAR_TEXT_COLOR = '949494';\nvar LIGHT_DEFAULT_TAB_BAR_INDICATOR_COLOR = '1e496e';\nvar LIGHT_DEFAULT_SWIPE_NAV_BACKGROUND_COLOR = 'fafafa';\nvar LIGHT_DEFAULT_SWIPE_NAV_INACTIVE_COLOR = '888888';\nvar LIGHT_DEFAULT_SWIPE_NAV_ACTIVE_COLOR = '1e88e5';\nvar LIGHT_DEFAULT_PULL_TO_REFRESH_COLOR = '1e496e';\nvar LIGHT_DEFAULT_SPLASH_BACKGROUND_COLOR = \"1e496e\";\nvar LIGHT_DEFAULT_PROGRESS_INDICATOR_COLOR = \"757575\";\nvar LIGHT_DEFAULT_SYSTEM_NAV_BACKGROUND_COLOR = \"ffffff\"\n\n// DARK theme color defaults\n\nvar DARK_DEFAULT_ACTIONBAR_COLOR = '212121';\nvar DARK_DEFAULT_STATUSBAR_COLOR = '030303';\nvar DARK_DEFAULT_TITLE_COLOR = 'ffffff';\nvar DARK_DEFAULT_ACCENT_COLOR = '80cbc4';\nvar DARK_DEFAULT_BACKGROUND_COLOR = '444444';\nvar DARK_DEFAULT_SIDEBAR_FOREGROUND_COLOR = 'ffffff';\nvar DARK_DEFAULT_SIDEBAR_BACKGROUND_COLOR = '333333';\nvar DARK_DEFAULT_SIDEBAR_SEPARATOR_COLOR = '30ffffff';\nvar DARK_DEFAULT_SIDEBAR_HIGHLIGHT_COLOR = 'ffffff';\nvar DARK_DEFAULT_TAB_BAR_BACKGROUND_COLOR = '333333';\nvar DARK_DEFAULT_TAB_BAR_TEXT_COLOR = 'ffffff';\nvar DARK_DEFAULT_TAB_BAR_INDICATOR_COLOR = '666666';\nvar DARK_DEFAULT_SWIPE_NAV_BACKGROUND_COLOR = '666666';\nvar DARK_DEFAULT_SWIPE_NAV_INACTIVE_COLOR = '888888';\nvar DARK_DEFAULT_SWIPE_NAV_ACTIVE_COLOR = 'ffffff';\nvar DARK_DEFAULT_PULL_TO_REFRESH_COLOR = 'ffffff';\nvar DARK_DEFAULT_SPLASH_BACKGROUND_COLOR = '333333';\nvar DARK_DEFAULT_PROGRESS_INDICATOR_COLOR = \"757575\";\nvar DARK_DEFAULT_SYSTEM_NAV_BACKGROUND_COLOR = \"030303\"\n\n// Handle args\n// Theme\nvar theme = process.argv[2];\n\n// Actionbar args\nvar actionBarColor = process.argv[3].toLowerCase();\nvar statusBarColor = process.argv[4].toLowerCase();\nvar titleColor = process.argv[5].toLowerCase();\nvar accentColor = process.argv[6].toLowerCase();\nvar backgroundColor = process.argv[7].toLowerCase();\n\n// Sidebar args\nvar sideBarForegroundColor = process.argv[8].toLowerCase();\nvar sideBarBackgroundColor = process.argv[9].toLowerCase();\nvar sidebarSeparatorColor = process.argv[10].toLowerCase();\nvar sidebarHighlightColor = process.argv[11].toLowerCase();\n\n// TabBar args\nvar tabBarBackground = process.argv[12].toLowerCase();\nvar tabBarTextColor = process.argv[13].toLowerCase();\nvar tabBarIndicatorColor = process.argv[14].toLowerCase();\n\n// Swipe args\nvar swipeBackgroundColor = process.argv[15].toLowerCase();\nvar swipeInactiveColor = process.argv[16].toLowerCase();\nvar swipeActiveColor = process.argv[17].toLowerCase();\n\n// Pull to Refresh args\nvar pullToRefresh = process.argv[18].toLowerCase();\n\n// Splash args\nvar splashBackgroundColor = process.argv[19].toLowerCase();\n\n// Progress indicator\nvar progressIndicatorColor = process.argv[20].toLowerCase();\n\n// System navigation bar\nvar systemNavBarBackgroundColor = process.argv[21].toLowerCase();\n\nvar defaultActionBarColor;\nvar defaultStatusBarColor;\nvar defaultTitleColor;\nvar defaultAccentColor;\nvar defaultBackgroundColor;\nvar defaultSidebarForegroundColor;\nvar defaultSidebarBackgroundColor;\nvar defaultSidebarSeparatorColor;\nvar defaultSidebarHighlightColor;\nvar defaultTabBarBackgroundColor;\nvar defaultTabBarTextColor;\nvar defaultTabBarIndicatorColor;\nvar defaultSwipeBackgroundColor;\nvar defaultSwipeInactiveColor;\nvar defaultSwipeActiveColor;\nvar defaultPullToRefreshColor;\nvar defaultSplashBackgroundColor;\nvar defaultProgressIndicatorColor;\nvar defaultSystemNavBackgroundColor;\n\n// Theme and default color values\nvar writeDir;\nif (theme === 'light' || theme === 'auto') {\n  writeDir = colorFileLight;\n\n  defaultActionBarColor = LIGHT_DEFAULT_ACTIONBAR_COLOR;\n  defaultStatusBarColor= LIGHT_DEFAULT_STATUSBAR_COLOR;\n  defaultTitleColor = LIGHT_DEFAULT_TITLE_COLOR;\n  defaultAccentColor = LIGHT_DEFAULT_ACCENT_COLOR;\n  defaultBackgroundColor = LIGHT_DEFAULT_BACKGROUND_COLOR;\n  defaultSidebarForegroundColor = LIGHT_DEFAULT_SIDEBAR_FOREGROUND_COLOR;\n  defaultSidebarBackgroundColor = LIGHT_DEFAULT_SIDEBAR_BACKGROUND_COLOR;\n  defaultSidebarSeparatorColor = LIGHT_DEFAULT_SIDEBAR_SEPARATOR_COLOR;\n  defaultSidebarHighlightColor = LIGHT_DEFAULT_SIDEBAR_HIGHLIGHT_COLOR;\n  defaultTabBarBackgroundColor = LIGHT_DEFAULT_TAB_BAR_BACKGROUND_COLOR;\n  defaultTabBarTextColor = LIGHT_DEFAULT_TAB_BAR_TEXT_COLOR;\n  defaultTabBarIndicatorColor = LIGHT_DEFAULT_TAB_BAR_INDICATOR_COLOR;\n  defaultSwipeBackgroundColor = LIGHT_DEFAULT_SWIPE_NAV_BACKGROUND_COLOR;\n  defaultSwipeInactiveColor = LIGHT_DEFAULT_SWIPE_NAV_INACTIVE_COLOR;\n  defaultSwipeActiveColor = LIGHT_DEFAULT_SWIPE_NAV_ACTIVE_COLOR;\n  defaultPullToRefreshColor = LIGHT_DEFAULT_PULL_TO_REFRESH_COLOR;\n  defaultSplashBackgroundColor = LIGHT_DEFAULT_SPLASH_BACKGROUND_COLOR;\n  defaultProgressIndicatorColor = LIGHT_DEFAULT_PROGRESS_INDICATOR_COLOR;\n  defaultSystemNavBackgroundColor = LIGHT_DEFAULT_SYSTEM_NAV_BACKGROUND_COLOR;\n\n} else if (theme === 'dark' || theme === 'light.darkactionbar') {\n  writeDir = colorFileDark;\n\n  defaultActionBarColor = DARK_DEFAULT_ACTIONBAR_COLOR;\n  defaultStatusBarColor= DARK_DEFAULT_STATUSBAR_COLOR;\n  defaultTitleColor = DARK_DEFAULT_TITLE_COLOR;\n  defaultAccentColor = DARK_DEFAULT_ACCENT_COLOR;\n  defaultBackgroundColor = DARK_DEFAULT_BACKGROUND_COLOR;\n  defaultSidebarForegroundColor = DARK_DEFAULT_SIDEBAR_FOREGROUND_COLOR;\n  defaultSidebarBackgroundColor = DARK_DEFAULT_SIDEBAR_BACKGROUND_COLOR;\n  defaultSidebarSeparatorColor = DARK_DEFAULT_SIDEBAR_SEPARATOR_COLOR;\n  defaultSidebarHighlightColor = DARK_DEFAULT_SIDEBAR_HIGHLIGHT_COLOR;\n  defaultTabBarBackgroundColor = DARK_DEFAULT_TAB_BAR_BACKGROUND_COLOR;\n  defaultTabBarTextColor = DARK_DEFAULT_TAB_BAR_TEXT_COLOR;\n  defaultTabBarIndicatorColor = DARK_DEFAULT_TAB_BAR_INDICATOR_COLOR;\n  defaultSwipeBackgroundColor = DARK_DEFAULT_SWIPE_NAV_BACKGROUND_COLOR;\n  defaultSwipeInactiveColor = DARK_DEFAULT_SWIPE_NAV_INACTIVE_COLOR;\n  defaultSwipeActiveColor = DARK_DEFAULT_SWIPE_NAV_ACTIVE_COLOR;\n  defaultPullToRefreshColor = DARK_DEFAULT_PULL_TO_REFRESH_COLOR;\n  defaultSplashBackgroundColor = DARK_DEFAULT_SPLASH_BACKGROUND_COLOR;\n  defaultProgressIndicatorColor = DARK_DEFAULT_PROGRESS_INDICATOR_COLOR;\n  defaultSystemNavBackgroundColor = DARK_DEFAULT_SYSTEM_NAV_BACKGROUND_COLOR;\n\n} else {\n  console.log('Invalid theme ' + theme);\n  showHelp();\n}\n\n// Check if colors are valid\ncheckColorRegex(actionBarColor, 'Invalid actionbar background color');\ncheckColorRegex(statusBarColor, 'Invalid status bar color');\ncheckColorRegex(titleColor, 'Invalid actionbar title color');\ncheckColorRegex(accentColor, 'Invalid accent color');\ncheckColorRegex(backgroundColor, 'Invalid background color');\ncheckColorRegex(sideBarForegroundColor, 'Invalid sidebar foreground color');\ncheckColorRegex(sideBarBackgroundColor, 'Invalid sidebar background color');\ncheckColorRegex(sidebarSeparatorColor, 'Invalid sidebar separator color');\ncheckColorRegex(sidebarHighlightColor, 'Invalid sidebar highlight color');\ncheckColorRegex(tabBarBackground, 'Invalid tab bar background color');\ncheckColorRegex(tabBarTextColor, 'Invalid tab bar text color');\ncheckColorRegex(tabBarIndicatorColor, 'Invalid tab bar indicator color');\ncheckColorRegex(swipeBackgroundColor, 'Invalid swipe nav background color');\ncheckColorRegex(swipeInactiveColor, 'Invalid swipe nav inactive color');\ncheckColorRegex(swipeActiveColor, 'Invalid swipe nav active color');\ncheckColorRegex(pullToRefresh, 'Invalid pullToRefresh color');\ncheckColorRegex(splashBackgroundColor, 'Invalid splash background color');\ncheckColorRegex(progressIndicatorColor, 'Invalid progress indicator color');\ncheckColorRegex(systemNavBarBackgroundColor, 'Invalid system navigation bar background color');\n\n// Start generating colors\nvar colorArray = [];\n\n// Actionbar colors\ncolorArray.push(createColorJSON('colorPrimary', actionBarColor, defaultActionBarColor));\ncolorArray.push(createColorJSON('statusBarBackground', statusBarColor, defaultStatusBarColor));\ncolorArray.push(createColorJSON('titleTextColor', titleColor, defaultTitleColor));\ncolorArray.push(createColorJSON('colorAccent', accentColor, defaultAccentColor));\ncolorArray.push(createColorJSON('colorBackground', backgroundColor, defaultBackgroundColor));\ncolorArray.push(createColorJSON('drawerArrow', titleColor, defaultTitleColor));\n\n// Sidebar colors\ncolorArray.push(createColorJSON('sidebarForeground', sideBarForegroundColor, defaultSidebarForegroundColor));\ncolorArray.push(createColorJSON('sidebarBackground', sideBarBackgroundColor, defaultSidebarBackgroundColor));\ncolorArray.push(createColorJSON('sidebarSeparatorColor', sidebarSeparatorColor, defaultSidebarSeparatorColor));\ncolorArray.push(createColorJSON('sidebarHighlight', sidebarHighlightColor, defaultSidebarHighlightColor));\n\n// TabBar colors\ncolorArray.push(createColorJSON('tabBarBackground', tabBarBackground, defaultTabBarBackgroundColor));\ncolorArray.push(createColorJSON('tabBarTextColor', tabBarTextColor, defaultTabBarTextColor));\ncolorArray.push(createColorJSON('tabBarIndicator', tabBarIndicatorColor, defaultTabBarIndicatorColor));\n\n// Swipe colors\ncolorArray.push(createColorJSON('swipe_nav_background', swipeBackgroundColor, defaultSwipeBackgroundColor));\ncolorArray.push(createColorJSON('swipe_nav_inactive', swipeInactiveColor, defaultSwipeInactiveColor));\ncolorArray.push(createColorJSON('swipe_nav_active', swipeActiveColor, defaultSwipeActiveColor));\n\n// Pull to Refresh color\ncolorArray.push(createColorJSON('pull_to_refresh_color', pullToRefresh, defaultPullToRefreshColor));\n\n// Splash colors\ncolorArray.push(createColorJSON('splash_background', splashBackgroundColor, defaultSplashBackgroundColor));\n\n// Progress indicator color\ncolorArray.push(createColorJSON('progress_indicator', progressIndicatorColor, defaultProgressIndicatorColor));\n\n// System navigation background color\ncolorArray.push(createColorJSON('systemNavBarBackground', systemNavBarBackgroundColor, defaultSystemNavBackgroundColor));\n\n// Sendbird theme\nvar includeSendbirdTheme = process.argv.includes('--include-sendbird-theme');\n\nif (includeSendbirdTheme) {\n    colorArray.push(createColorJSON('primary_100', actionBarColor, defaultActionBarColor));\n    colorArray.push(createColorJSON('primary_200', actionBarColor, defaultActionBarColor));\n    colorArray.push(createColorJSON('primary_300', actionBarColor, defaultActionBarColor));\n    colorArray.push(createColorJSON('primary_400', statusBarColor, defaultStatusBarColor));\n    colorArray.push(createColorJSON('primary_500', statusBarColor, defaultStatusBarColor));\n}\n\n// Build colors in xml from JSON array of colors\nvar xmlFinal = builder.buildObject({resources: colorArray});\n\n// Write to file\nfs.writeFile(writeDir, xmlFinal, (err) => {\n    if (err)\n      console.log(err);\n    else {\n      console.log(\"File written successfully\\n\");\n    }\n});\n\n// Helper functions\n\nfunction showHelp() {\n  console.log('Usage: generate-theme.js (dark|light|light.darkactionbar|auto) ' +\n          'actionBarColor statusBarColor titleColor accentColor backgroundColor ' +\n          'sidebarForegroundColor sidebarBackgroundColor sidebarSeparatorColor sidebarHighlightColor ' +\n          'tabBarBackgroundColor tabBarTextColor tabBarIndicatorColor ' +\n          'swipeBackgroundColor swipeInactiveColor swipeActiveColor pullToRefreshColor ' +\n          'splashBackgroundColor activityIndicatorColor systemNavBarBackground');\n  console.log('Example: generate-theme.js light dcdcdc 757575 000000 ff0000 ...');\n  console.log('Colors can be blank for default');\n  process.exit(1);\n}\n\nfunction checkColorRegex(color, message) {\n  if (color !== '' && !/^(([0-9a-f]){6}|([0-9a-f]){8})$/.test(color)) {\n      console.log(message + ' ' + color);\n      showHelp();\n  }\n}\n\n// Creates a JSON object of color which will be then transformed to xml\nfunction createColorJSON(colorName, colorCode, defaultColor) {\n  if (colorCode !== '') {\n    return {color: {$: {name: colorName}, _: '#' + colorCode}};\n  } else {\n    return {color: {$: {name: colorName}, _: '#' + defaultColor}};\n  }\n}",
+      "hits": [
+        {
+          "file": "generate-theme.js",
+          "line": 247,
+          "text": "Write to file",
+          "kind": "descriptive_block",
+          "score": 66.66666666666667
+        }
+      ],
+      "symbols": [],
+      "comments": [
+        {
+          "file": "generate-theme.js",
+          "line": 7,
+          "range": "generate-theme.js:7",
+          "kind": "descriptive_block",
+          "text": "Color resources files"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 11,
+          "range": "generate-theme.js:11",
+          "kind": "descriptive_block",
+          "text": "Check argument length"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 17,
+          "range": "generate-theme.js:17",
+          "kind": "descriptive_block",
+          "text": "LIGHT theme color defaults"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 39,
+          "range": "generate-theme.js:39",
+          "kind": "descriptive_block",
+          "text": "DARK theme color defaults"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 61,
+          "range": "generate-theme.js:61",
+          "kind": "descriptive_block",
+          "text": "Handle args Theme"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 65,
+          "range": "generate-theme.js:65",
+          "kind": "descriptive_block",
+          "text": "Actionbar args"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 72,
+          "range": "generate-theme.js:72",
+          "kind": "descriptive_block",
+          "text": "Sidebar args"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 78,
+          "range": "generate-theme.js:78",
+          "kind": "descriptive_block",
+          "text": "TabBar args"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 83,
+          "range": "generate-theme.js:83",
+          "kind": "descriptive_block",
+          "text": "Swipe args"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 88,
+          "range": "generate-theme.js:88",
+          "kind": "descriptive_block",
+          "text": "Pull to Refresh args"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 91,
+          "range": "generate-theme.js:91",
+          "kind": "descriptive_block",
+          "text": "Splash args"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 94,
+          "range": "generate-theme.js:94",
+          "kind": "descriptive_block",
+          "text": "Progress indicator"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 97,
+          "range": "generate-theme.js:97",
+          "kind": "descriptive_block",
+          "text": "System navigation bar"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 120,
+          "range": "generate-theme.js:120",
+          "kind": "descriptive_block",
+          "text": "Theme and default color values"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 173,
+          "range": "generate-theme.js:173",
+          "kind": "descriptive_block",
+          "text": "Check if colors are valid"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 194,
+          "range": "generate-theme.js:194",
+          "kind": "descriptive_block",
+          "text": "Start generating colors"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 197,
+          "range": "generate-theme.js:197",
+          "kind": "descriptive_block",
+          "text": "Actionbar colors"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 205,
+          "range": "generate-theme.js:205",
+          "kind": "descriptive_block",
+          "text": "Sidebar colors"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 211,
+          "range": "generate-theme.js:211",
+          "kind": "descriptive_block",
+          "text": "TabBar colors"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 216,
+          "range": "generate-theme.js:216",
+          "kind": "descriptive_block",
+          "text": "Swipe colors"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 221,
+          "range": "generate-theme.js:221",
+          "kind": "descriptive_block",
+          "text": "Pull to Refresh color"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 224,
+          "range": "generate-theme.js:224",
+          "kind": "descriptive_block",
+          "text": "Splash colors"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 227,
+          "range": "generate-theme.js:227",
+          "kind": "descriptive_block",
+          "text": "Progress indicator color"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 230,
+          "range": "generate-theme.js:230",
+          "kind": "descriptive_block",
+          "text": "System navigation background color"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 233,
+          "range": "generate-theme.js:233",
+          "kind": "descriptive_block",
+          "text": "Sendbird theme"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 244,
+          "range": "generate-theme.js:244",
+          "kind": "descriptive_block",
+          "text": "Build colors in xml from JSON array of colors"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 247,
+          "range": "generate-theme.js:247",
+          "kind": "descriptive_block",
+          "text": "Write to file"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 256,
+          "range": "generate-theme.js:256",
+          "kind": "descriptive_block",
+          "text": "Helper functions"
+        },
+        {
+          "file": "generate-theme.js",
+          "line": 277,
+          "range": "generate-theme.js:277",
+          "kind": "descriptive_block",
+          "text": "Creates a JSON object of color which will be then transformed to xml"
+        }
+      ],
+      "functions_index": []
+    }
+  ],
+  "relation": {
+    "directive": "where is activity_main.xml",
+    "is_relation_query": false,
+    "entities": [],
+    "matched": {},
+    "paths": [],
+    "evidence": [],
+    "confidence": "none",
+    "note": "not a relationship query"
+  },
+  "mode": "full_recon",
+  "snap": null,
+  "keyword_terms": [],
+  "keyword_functions": [],
+  "centrality": [
+    {
+      "id": "app_src_main_java_co_median_android_mainactivity_mainactivity",
+      "degree": 209,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_mainactivity_java_override",
+      "degree": 83,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_widget_gonativeswiperefreshlayout_gonativeswiperefreshlayout",
+      "degree": 83,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_normal_java_co_median_android_leanwebview_leanwebview",
+      "degree": 60,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "android_content_context",
+      "degree": 53,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_mainactivity_mainactivity_oncreate",
+      "degree": 49,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_urlnavigation_urlnavigation",
+      "degree": 45,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_mainactivity",
+      "degree": 42,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_filedownloader_filedownloader",
+      "degree": 40,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_actionmanager_actionmanager",
+      "degree": 38,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_tabmanager_tabmanager",
+      "degree": 37,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "android_webkit_webview",
+      "degree": 35,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_jsonmenuadapter_jsonmenuadapter",
+      "degree": 35,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_fileuploadcontract_fileuploadcontract",
+      "degree": 29,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    },
+    {
+      "id": "app_src_main_java_co_median_android_gonativeapplication_gonativeapplication",
+      "degree": 29,
+      "file": "",
+      "line": 0,
+      "type": "node"
+    }
+  ],
+  "git": {
+    "is_repo": false,
+    "branch": "(not a repo)",
+    "remote_url": "(no remote)",
+    "upstream": "(none)",
+    "ahead": 0,
+    "behind": 0,
+    "dirty_count": 0,
+    "dirty_files": [],
+    "last_commit": ""
+  },
+  "git_log": [],
+  "git_stash": [],
+  "snaps": []
+}
