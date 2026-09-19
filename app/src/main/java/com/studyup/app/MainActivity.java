@@ -7,6 +7,8 @@ public class MainActivity extends BridgeActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        registerPlugin(GoogleAuthPlugin.class);
+        registerPlugin(OneSignalPlugin.class);
         super.onCreate(savedInstanceState);
         
         // Initialize OneSignal SDK safely
