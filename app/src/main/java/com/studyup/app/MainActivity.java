@@ -37,6 +37,26 @@ public class MainActivity extends BridgeActivity {
             });
         }
 
+        // Intercept requests originating from Service Workers (Serwist/Workbox)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            try {
+                android.webkit.ServiceWorkerController.getInstance().setServiceWorkerClient(new android.webkit.ServiceWorkerClient() {
+                    @Override
+                    public WebResourceResponse shouldInterceptRequest(WebResourceRequest request) {
+                        if (offlineInterceptor != null) {
+                            WebResourceResponse offlineResponse = offlineInterceptor.intercept(request);
+                            if (offlineResponse != null) {
+                                return offlineResponse;
+                            }
+                        }
+                        return super.shouldInterceptRequest(request);
+                    }
+                });
+            } catch (Exception e) {
+                android.util.Log.w("StudyUp", "ServiceWorkerController interceptor setup skipped: " + e.getMessage());
+            }
+        }
+
         // Initialize OneSignal SDK safely
         try {
             OneSignalManager.getInstance().initialize(this);
