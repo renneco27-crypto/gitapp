@@ -138,7 +138,6 @@ public class OfflineResourceInterceptor {
                 String responseMime = isRsc ? "text/x-component" : "text/html";
 
                 try {
-                    File dataDir = context.getFilesDir();
                     File localUpdate = new File(dataDir, "webapp/" + baseOfflineAsset.replace("public/", "") + (isRsc ? ".rsc" : ".html"));
                     InputStream is;
                     if (localUpdate.exists() && localUpdate.isFile()) {
@@ -152,7 +151,6 @@ public class OfflineResourceInterceptor {
                     return new WebResourceResponse(responseMime, encoding, 200, "OK", responseHeaders, is);
                 } catch (Exception ex) {
                     try {
-                        File dataDir = context.getFilesDir();
                         File localUpdateHtml = new File(dataDir, "webapp/" + baseOfflineAsset.replace("public/", "") + ".html");
                         InputStream is;
                         if (localUpdateHtml.exists() && localUpdateHtml.isFile()) {
@@ -165,7 +163,6 @@ public class OfflineResourceInterceptor {
                         return new WebResourceResponse("text/html", encoding, 200, "OK", responseHeaders, is);
                     } catch (Exception ex2) {
                         try {
-                            File dataDir = context.getFilesDir();
                             File fallbackHtml = new File(dataDir, "webapp/study/_offline.html");
                             InputStream is;
                             if (fallbackHtml.exists() && fallbackHtml.isFile()) {
@@ -185,7 +182,6 @@ public class OfflineResourceInterceptor {
             if (!cleanPath.contains(".")) {
                 if (isRsc) {
                     try {
-                        File dataDir = context.getFilesDir();
                         File localRsc = new File(dataDir, "webapp/" + cleanPath + ".rsc");
                         InputStream is;
                         if (localRsc.exists() && localRsc.isFile()) {
@@ -199,7 +195,6 @@ public class OfflineResourceInterceptor {
                     } catch (Exception ignored) {}
                 }
                 try {
-                    File dataDir = context.getFilesDir();
                     File localHtml = new File(dataDir, "webapp/" + cleanPath + ".html");
                     InputStream is;
                     if (localHtml.exists() && localHtml.isFile()) {
@@ -216,7 +211,6 @@ public class OfflineResourceInterceptor {
             // 4. Fallback for root / index rsc
             if (cleanPath.equals("index.html") && isRsc) {
                 try {
-                    File dataDir = context.getFilesDir();
                     File localIndexRsc = new File(dataDir, "webapp/index.rsc");
                     InputStream is;
                     if (localIndexRsc.exists() && localIndexRsc.isFile()) {
