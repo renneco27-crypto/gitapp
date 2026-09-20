@@ -17,6 +17,7 @@ public class MainActivity extends BridgeActivity {
         registerPlugin(OneSignalPlugin.class);
         registerPlugin(NativeDeckStoragePlugin.class);
         registerPlugin(NativeTTSPlugin.class);
+        registerPlugin(NativeSTTPlugin.class);
         super.onCreate(savedInstanceState);
 
         offlineInterceptor = new OfflineResourceInterceptor(this);

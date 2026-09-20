@@ -36,6 +36,11 @@ allprojects {
         sourceCompatibility = "17"
         targetCompatibility = "17"
     }
+    tasks.withType(Task).configureEach { task ->
+        if (task.name.startsWith("compile") && task.name.endsWith("Kotlin")) {
+            task.kotlinOptions.jvmTarget = "17"
+        }
+    }
 }
 
 task clean(type: Delete) {
