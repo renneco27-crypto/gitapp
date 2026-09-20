@@ -62,10 +62,10 @@ public class OfflineResourceInterceptor {
         }
 
         // When offline (or for cached static assets), resolve locally
-        return getLocalResponse(path);
+        return getLocalResponse(uri, path);
     }
 
-    private WebResourceResponse getLocalResponse(String path) {
+    private WebResourceResponse getLocalResponse(Uri uri, String path) {
         String cleanPath = path;
         if (cleanPath.startsWith("/")) {
             cleanPath = cleanPath.substring(1);
@@ -76,9 +76,10 @@ public class OfflineResourceInterceptor {
 
         String mimeType = getMimeType(cleanPath);
         String encoding = "UTF-8";
+        boolean isRsc = (uri != null && uri.getQueryParameter("_rsc") != null) || path.endsWith(".rsc");
 
         try {
-            // 1. Check in packaged assets: "public/" + cleanPath
+            // 1. Direct match in packaged assets: "public/" + cleanPath
             String assetPath = "public/" + cleanPath;
             try {
                 InputStream is = assetManager.open(assetPath);
@@ -89,8 +90,72 @@ public class OfflineResourceInterceptor {
                 // Not a direct static file in assets
             }
 
-            // 2. Check for pre-cooked html route: e.g. /leaderboard -> public/leaderboard.html, /feed -> public/feed.html
+            // 2. Study routes: /study/{deckId}/...
+            if (path.startsWith("/study/") || path.equals("/study")) {
+                if (path.equals("/study") || path.equals("/study/")) {
+                    try {
+                        InputStream is = assetManager.open("public/index.html");
+                        Map<String, String> responseHeaders = new HashMap<>();
+                        responseHeaders.put("Access-Control-Allow-Origin", "*");
+                        return new WebResourceResponse("text/html", encoding, 200, "OK", responseHeaders, is);
+                    } catch (Exception ignored) {}
+                }
+
+                String sub = path.substring("/study/".length());
+                if (sub.endsWith("/")) sub = sub.substring(0, sub.length() - 1);
+
+                int slashIdx = sub.indexOf('/');
+                String modePath = "";
+                if (slashIdx != -1) {
+                    modePath = sub.substring(slashIdx + 1);
+                }
+
+                String baseOfflineAsset;
+                if (modePath.isEmpty() || modePath.equals(".rsc")) {
+                    baseOfflineAsset = "public/study/_offline";
+                } else {
+                    if (modePath.endsWith(".rsc")) {
+                        modePath = modePath.substring(0, modePath.length() - 4);
+                    }
+                    baseOfflineAsset = "public/study/_offline/" + modePath;
+                }
+
+                String targetAsset = isRsc ? (baseOfflineAsset + ".rsc") : (baseOfflineAsset + ".html");
+                String responseMime = isRsc ? "text/x-component" : "text/html";
+
+                try {
+                    InputStream is = assetManager.open(targetAsset);
+                    Map<String, String> responseHeaders = new HashMap<>();
+                    responseHeaders.put("Access-Control-Allow-Origin", "*");
+                    responseHeaders.put("Cache-Control", "no-cache");
+                    return new WebResourceResponse(responseMime, encoding, 200, "OK", responseHeaders, is);
+                } catch (Exception ex) {
+                    try {
+                        InputStream is = assetManager.open(baseOfflineAsset + ".html");
+                        Map<String, String> responseHeaders = new HashMap<>();
+                        responseHeaders.put("Access-Control-Allow-Origin", "*");
+                        return new WebResourceResponse("text/html", encoding, 200, "OK", responseHeaders, is);
+                    } catch (Exception ex2) {
+                        try {
+                            InputStream is = assetManager.open("public/study/_offline.html");
+                            Map<String, String> responseHeaders = new HashMap<>();
+                            responseHeaders.put("Access-Control-Allow-Origin", "*");
+                            return new WebResourceResponse("text/html", encoding, 200, "OK", responseHeaders, is);
+                        } catch (Exception ignored) {}
+                    }
+                }
+            }
+
+            // 3. Pre-rendered HTML / RSC routes: e.g. /leaderboard -> public/leaderboard.html or .rsc
             if (!cleanPath.contains(".")) {
+                if (isRsc) {
+                    try {
+                        InputStream is = assetManager.open("public/" + cleanPath + ".rsc");
+                        Map<String, String> responseHeaders = new HashMap<>();
+                        responseHeaders.put("Access-Control-Allow-Origin", "*");
+                        return new WebResourceResponse("text/x-component", encoding, 200, "OK", responseHeaders, is);
+                    } catch (Exception ignored) {}
+                }
                 try {
                     InputStream is = assetManager.open("public/" + cleanPath + ".html");
                     Map<String, String> responseHeaders = new HashMap<>();
@@ -99,13 +164,13 @@ public class OfflineResourceInterceptor {
                 } catch (Exception notHtml) {}
             }
 
-            // 3. For dynamic study routes (/study/...), serve the SPA shell (index.html) so React router renders the deck
-            if (path.startsWith("/study/")) {
+            // 4. Fallback for root / index rsc
+            if (cleanPath.equals("index.html") && isRsc) {
                 try {
-                    InputStream is = assetManager.open("public/index.html");
+                    InputStream is = assetManager.open("public/index.rsc");
                     Map<String, String> responseHeaders = new HashMap<>();
                     responseHeaders.put("Access-Control-Allow-Origin", "*");
-                    return new WebResourceResponse("text/html", encoding, 200, "OK", responseHeaders, is);
+                    return new WebResourceResponse("text/x-component", encoding, 200, "OK", responseHeaders, is);
                 } catch (Exception ignored) {}
             }
         } catch (Exception e) {
@@ -116,7 +181,7 @@ public class OfflineResourceInterceptor {
     }
 
     private String getMimeType(String path) {
-        if (path.endsWith(".html") || !path.contains(".")) return "text/html";
+        if (path.endsWith(".html")) return "text/html";
         if (path.endsWith(".rsc")) return "text/x-component";
         if (path.endsWith(".js") || path.endsWith(".mjs")) return "application/javascript";
         if (path.endsWith(".css")) return "text/css";
