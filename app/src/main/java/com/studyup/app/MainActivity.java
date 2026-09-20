@@ -16,6 +16,7 @@ public class MainActivity extends BridgeActivity {
         registerPlugin(GoogleAuthPlugin.class);
         registerPlugin(OneSignalPlugin.class);
         registerPlugin(NativeDeckStoragePlugin.class);
+        registerPlugin(NativeTTSPlugin.class);
         super.onCreate(savedInstanceState);
 
         offlineInterceptor = new OfflineResourceInterceptor(this);
