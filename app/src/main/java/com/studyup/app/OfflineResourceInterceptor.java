@@ -9,6 +9,8 @@ import android.util.Log;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -79,6 +81,18 @@ public class OfflineResourceInterceptor {
         boolean isRsc = (uri != null && uri.getQueryParameter("_rsc") != null) || path.endsWith(".rsc");
 
         try {
+            // 0. Check for downloaded webapp updates in getFilesDir() first
+            File dataDir = context.getFilesDir();
+            File updatedAsset = new File(dataDir, "webapp/" + cleanPath);
+            if (updatedAsset.exists() && updatedAsset.isFile()) {
+                try {
+                    InputStream is = new java.io.FileInputStream(updatedAsset);
+                    Map<String, String> responseHeaders = new HashMap<>();
+                    responseHeaders.put("Access-Control-Allow-Origin", "*");
+                    return new WebResourceResponse(mimeType, encoding, 200, "OK", responseHeaders, is);
+                } catch (Exception e) {}
+            }
+
             // 1. Direct match in packaged assets: "public/" + cleanPath
             String assetPath = "public/" + cleanPath;
             try {
@@ -124,20 +138,41 @@ public class OfflineResourceInterceptor {
                 String responseMime = isRsc ? "text/x-component" : "text/html";
 
                 try {
-                    InputStream is = assetManager.open(targetAsset);
+                    File dataDir = context.getFilesDir();
+                    File localUpdate = new File(dataDir, "webapp/" + baseOfflineAsset.replace("public/", "") + (isRsc ? ".rsc" : ".html"));
+                    InputStream is;
+                    if (localUpdate.exists() && localUpdate.isFile()) {
+                        is = new java.io.FileInputStream(localUpdate);
+                    } else {
+                        is = assetManager.open(targetAsset);
+                    }
                     Map<String, String> responseHeaders = new HashMap<>();
                     responseHeaders.put("Access-Control-Allow-Origin", "*");
                     responseHeaders.put("Cache-Control", "no-cache");
                     return new WebResourceResponse(responseMime, encoding, 200, "OK", responseHeaders, is);
                 } catch (Exception ex) {
                     try {
-                        InputStream is = assetManager.open(baseOfflineAsset + ".html");
+                        File dataDir = context.getFilesDir();
+                        File localUpdateHtml = new File(dataDir, "webapp/" + baseOfflineAsset.replace("public/", "") + ".html");
+                        InputStream is;
+                        if (localUpdateHtml.exists() && localUpdateHtml.isFile()) {
+                            is = new java.io.FileInputStream(localUpdateHtml);
+                        } else {
+                            is = assetManager.open(baseOfflineAsset + ".html");
+                        }
                         Map<String, String> responseHeaders = new HashMap<>();
                         responseHeaders.put("Access-Control-Allow-Origin", "*");
                         return new WebResourceResponse("text/html", encoding, 200, "OK", responseHeaders, is);
                     } catch (Exception ex2) {
                         try {
-                            InputStream is = assetManager.open("public/study/_offline.html");
+                            File dataDir = context.getFilesDir();
+                            File fallbackHtml = new File(dataDir, "webapp/study/_offline.html");
+                            InputStream is;
+                            if (fallbackHtml.exists() && fallbackHtml.isFile()) {
+                                is = new java.io.FileInputStream(fallbackHtml);
+                            } else {
+                                is = assetManager.open("public/study/_offline.html");
+                            }
                             Map<String, String> responseHeaders = new HashMap<>();
                             responseHeaders.put("Access-Control-Allow-Origin", "*");
                             return new WebResourceResponse("text/html", encoding, 200, "OK", responseHeaders, is);
@@ -150,14 +185,28 @@ public class OfflineResourceInterceptor {
             if (!cleanPath.contains(".")) {
                 if (isRsc) {
                     try {
-                        InputStream is = assetManager.open("public/" + cleanPath + ".rsc");
+                        File dataDir = context.getFilesDir();
+                        File localRsc = new File(dataDir, "webapp/" + cleanPath + ".rsc");
+                        InputStream is;
+                        if (localRsc.exists() && localRsc.isFile()) {
+                            is = new java.io.FileInputStream(localRsc);
+                        } else {
+                            is = assetManager.open("public/" + cleanPath + ".rsc");
+                        }
                         Map<String, String> responseHeaders = new HashMap<>();
                         responseHeaders.put("Access-Control-Allow-Origin", "*");
                         return new WebResourceResponse("text/x-component", encoding, 200, "OK", responseHeaders, is);
                     } catch (Exception ignored) {}
                 }
                 try {
-                    InputStream is = assetManager.open("public/" + cleanPath + ".html");
+                    File dataDir = context.getFilesDir();
+                    File localHtml = new File(dataDir, "webapp/" + cleanPath + ".html");
+                    InputStream is;
+                    if (localHtml.exists() && localHtml.isFile()) {
+                        is = new java.io.FileInputStream(localHtml);
+                    } else {
+                        is = assetManager.open("public/" + cleanPath + ".html");
+                    }
                     Map<String, String> responseHeaders = new HashMap<>();
                     responseHeaders.put("Access-Control-Allow-Origin", "*");
                     return new WebResourceResponse("text/html", encoding, 200, "OK", responseHeaders, is);
@@ -167,7 +216,14 @@ public class OfflineResourceInterceptor {
             // 4. Fallback for root / index rsc
             if (cleanPath.equals("index.html") && isRsc) {
                 try {
-                    InputStream is = assetManager.open("public/index.rsc");
+                    File dataDir = context.getFilesDir();
+                    File localIndexRsc = new File(dataDir, "webapp/index.rsc");
+                    InputStream is;
+                    if (localIndexRsc.exists() && localIndexRsc.isFile()) {
+                        is = new java.io.FileInputStream(localIndexRsc);
+                    } else {
+                        is = assetManager.open("public/index.rsc");
+                    }
                     Map<String, String> responseHeaders = new HashMap<>();
                     responseHeaders.put("Access-Control-Allow-Origin", "*");
                     return new WebResourceResponse("text/x-component", encoding, 200, "OK", responseHeaders, is);
