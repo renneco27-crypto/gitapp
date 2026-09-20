@@ -1,9 +1,17 @@
 package com.studyup.app;
 
+import android.app.DownloadManager;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.webkit.CookieManager;
+import android.webkit.DownloadListener;
+import android.webkit.URLUtil;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
+import android.widget.Toast;
 import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.BridgeWebViewClient;
 
@@ -22,9 +30,10 @@ public class MainActivity extends BridgeActivity {
 
         offlineInterceptor = new OfflineResourceInterceptor(this);
 
-        // Attach offline resource interceptor to Capacitor's BridgeWebViewClient
+        // Attach offline resource interceptor and DownloadListener to Capacitor's WebView
         if (getBridge() != null && getBridge().getWebView() != null) {
-            getBridge().getWebView().setWebViewClient(new BridgeWebViewClient(getBridge()) {
+            WebView webView = getBridge().getWebView();
+            webView.setWebViewClient(new BridgeWebViewClient(getBridge()) {
                 @Override
                 public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
                     if (offlineInterceptor != null) {
@@ -34,6 +43,38 @@ public class MainActivity extends BridgeActivity {
                         }
                     }
                     return super.shouldInterceptRequest(view, request);
+                }
+            });
+
+            // Route web downloads directly to public Downloads folder with system notification
+            webView.setDownloadListener(new DownloadListener() {
+                @Override
+                public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
+                    try {
+                        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                        if (mimetype != null && !mimetype.isEmpty()) {
+                            request.setMimeType(mimetype);
+                        }
+                        String cookies = CookieManager.getInstance().getCookie(url);
+                        if (cookies != null) {
+                            request.addRequestHeader("cookie", cookies);
+                        }
+                        request.addRequestHeader("User-Agent", userAgent);
+                        request.setDescription("Downloading to Downloads folder...");
+                        String filename = URLUtil.guessFileName(url, contentDisposition, mimetype);
+                        request.setTitle(filename);
+                        request.allowScanningByMediaScanner();
+                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
+
+                        DownloadManager dm = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                        if (dm != null) {
+                            dm.enqueue(request);
+                            Toast.makeText(getApplicationContext(), "Downloading " + filename + " to Downloads folder...", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (Exception e) {
+                        android.util.Log.e("StudyUp", "Download failed: " + e.getMessage(), e);
+                    }
                 }
             });
         }

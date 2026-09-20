@@ -1,7 +1,16 @@
 package com.studyup.app;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.getcapacitor.JSArray;
 import com.getcapacitor.JSObject;
@@ -15,6 +24,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
 @CapacitorPlugin(name = "NativeDeckStorage")
@@ -22,6 +32,70 @@ public class NativeDeckStoragePlugin extends Plugin {
 
     private static final String TAG = "NativeDeckStorage";
     private static final String DECKS_DIR_NAME = "decks";
+
+    @PluginMethod
+    public void saveFileToDownloads(PluginCall call) {
+        String filename = call.getString("filename");
+        String base64Data = call.getString("base64Data");
+        String mimeType = call.getString("mimeType", "application/octet-stream");
+
+        if (filename == null || base64Data == null) {
+            call.reject("Missing filename or base64Data");
+            return;
+        }
+
+        try {
+            if (base64Data.contains(",")) {
+                base64Data = base64Data.substring(base64Data.indexOf(",") + 1);
+            }
+            byte[] fileBytes = Base64.decode(base64Data, Base64.DEFAULT);
+
+            Context context = getContext();
+            Uri savedUri = null;
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.MediaColumns.DISPLAY_NAME, filename);
+                values.put(MediaStore.MediaColumns.MIME_TYPE, mimeType);
+                values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+
+                savedUri = context.getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
+                if (savedUri != null) {
+                    try (OutputStream os = context.getContentResolver().openOutputStream(savedUri)) {
+                        if (os != null) {
+                            os.write(fileBytes);
+                            os.flush();
+                        }
+                    }
+                }
+            } else {
+                File downloadDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                if (!downloadDir.exists()) {
+                    downloadDir.mkdirs();
+                }
+                File targetFile = new File(downloadDir, filename);
+                try (FileOutputStream fos = new FileOutputStream(targetFile)) {
+                    fos.write(fileBytes);
+                    fos.flush();
+                }
+                savedUri = Uri.fromFile(targetFile);
+            }
+
+            Handler mainHandler = new Handler(Looper.getMainLooper());
+            mainHandler.post(() -> {
+                Toast.makeText(context, "Saved " + filename + " to Downloads folder", Toast.LENGTH_LONG).show();
+            });
+
+            JSObject res = new JSObject();
+            res.put("success", true);
+            res.put("uri", savedUri != null ? savedUri.toString() : "");
+            res.put("directory", "Downloads");
+            call.resolve(res);
+        } catch (Exception e) {
+            Log.e(TAG, "Error saving file to Downloads", e);
+            call.reject("Failed to save to Downloads: " + e.getMessage());
+        }
+    }
 
     private File getDecksDir() {
         Context context = getContext();
