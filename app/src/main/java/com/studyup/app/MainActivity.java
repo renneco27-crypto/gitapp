@@ -2,6 +2,7 @@ package com.studyup.app;
 
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,6 +19,7 @@ import com.getcapacitor.BridgeWebViewClient;
 public class MainActivity extends BridgeActivity {
 
     private OfflineResourceInterceptor offlineInterceptor;
+    private SharedFilePlugin sharedFilePlugin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,13 @@ public class MainActivity extends BridgeActivity {
         registerPlugin(NativeDeckStoragePlugin.class);
         registerPlugin(NativeTTSPlugin.class);
         registerPlugin(NativeSTTPlugin.class);
+        registerPlugin(SharedFilePlugin.class);
         super.onCreate(savedInstanceState);
+
+        // Grab reference and process any share intent that launched this activity
+        com.getcapacitor.PluginHandle handle = getBridge().getPlugin("SharedFile");
+        sharedFilePlugin = (SharedFilePlugin) handle.getInstance();
+        handleShareIntent(getIntent());
 
         offlineInterceptor = new OfflineResourceInterceptor(this);
 
@@ -106,5 +114,17 @@ public class MainActivity extends BridgeActivity {
             android.util.Log.e("StudyUp", "Error initializing OneSignalManager", e);
         }
     }
-}
 
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handleShareIntent(intent);
+    }
+
+    private void handleShareIntent(Intent intent) {
+        if (sharedFilePlugin != null) {
+            sharedFilePlugin.handleIntent(intent);
+        }
+    }
+}
