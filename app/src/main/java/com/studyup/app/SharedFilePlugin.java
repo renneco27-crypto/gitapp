@@ -56,7 +56,13 @@ public class SharedFilePlugin extends Plugin {
             try {
                 File cached = copyToCache(uri);
                 if (cached != null) {
-                    files.put(Uri.fromFile(cached).toString());
+                    JSObject entry = new JSObject();
+                    entry.put("name", cached.getName());
+                    entry.put("path", cached.getAbsolutePath());
+                    entry.put("size", cached.length());
+                    String mime = getContext().getContentResolver().getType(uri);
+                    entry.put("mimeType", mime != null ? mime : "application/octet-stream");
+                    files.put(entry);
                     android.util.Log.d("StudyUp", "SharedFile cached: " + cached.getAbsolutePath() + " (" + cached.length() + " bytes)");
                 }
             } catch (Exception e) {
