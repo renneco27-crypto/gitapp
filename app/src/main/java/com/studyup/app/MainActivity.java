@@ -19,7 +19,7 @@ import com.getcapacitor.BridgeWebViewClient;
 public class MainActivity extends BridgeActivity {
 
     private OfflineResourceInterceptor offlineInterceptor;
-    private SharedFilePlugin sharedFilePlugin;
+ 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,9 @@ public class MainActivity extends BridgeActivity {
         registerPlugin(SharedFilePlugin.class);
         super.onCreate(savedInstanceState);
 
-        // Grab reference and process any share intent that launched this activity
-        com.getcapacitor.PluginHandle handle = getBridge().getPlugin("SharedFile");
-        sharedFilePlugin = (SharedFilePlugin) handle.getInstance();
-        handleShareIntent(getIntent());
+        // Process any share intent that launched this activity (delayed so Capacitor bridge is ready)
+        final Intent launchIntent = getIntent();
+        new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> handleShareIntent(launchIntent), 300);
 
         offlineInterceptor = new OfflineResourceInterceptor(this);
 
@@ -123,8 +122,17 @@ public class MainActivity extends BridgeActivity {
     }
 
     private void handleShareIntent(Intent intent) {
-        if (sharedFilePlugin != null) {
-            sharedFilePlugin.handleIntent(intent);
+        if (intent == null) return;
+        com.getcapacitor.PluginHandle handle = getBridge() != null ? getBridge().getPlugin("SharedFile") : null;
+        if (handle == null) {
+            android.util.Log.w("StudyUp", "SharedFile plugin not registered yet");
+            return;
         }
+        SharedFilePlugin plugin = (SharedFilePlugin) handle.getInstance();
+        if (plugin == null) {
+            android.util.Log.w("StudyUp", "SharedFile plugin instance null");
+            return;
+        }
+        plugin.handleIntent(intent);
     }
 }
